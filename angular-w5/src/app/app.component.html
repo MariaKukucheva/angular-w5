@@ -1,0 +1,12 @@
+<div class="container">
+    <h1>NAMEDAY</h1>
+    <div class="buttons-container">
+      <button class="blue-button" (click)="startToday()">Today</button>
+      <button class="blue-button" (click)="startName()">Name search</button>
+    </div>
+    <ng-container [ngSwitch]="switchC">
+        <app-today *ngSwitchCase="'today'"></app-today>
+        <app-name-search *ngSwitchCase="'name'"></app-name-search>
+    </ng-container>
+  </div>
+  

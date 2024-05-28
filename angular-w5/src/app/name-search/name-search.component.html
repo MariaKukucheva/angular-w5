@@ -1,0 +1,15 @@
+<div class="name-search-container">
+    <input id="name" (input)="processInputName($event)" [(ngModel)]="inputName" placeholder="Enter name" pattern="[a-zA-Z]{2,}"  required #nameInput="ngModel">   
+    <div *ngIf="!inputName || nameInput.invalid">
+      Name must contain at least two letters.
+    </div>
+     <button  (click)="nameBtn()">Check</button>
+    <div *ngIf="yes"> 
+      <h1>Day: {{day}}</h1>
+      <h1>Month: {{month}}</h1>
+    </div>
+    <div *ngIf="no">
+      <h1>No nameday</h1>
+    </div>
+  </div>
+  
