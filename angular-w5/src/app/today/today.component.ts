@@ -18,7 +18,6 @@ export class TodayComponent implements OnInit {
   month: number = 0;
 
   yes = false;
-  no = false;
 
   constructor() {}
 
@@ -31,19 +30,11 @@ export class TodayComponent implements OnInit {
       this.month = response.month;
       this.names = response.nameday["bg"];
 
-      if (this.names && this.names.length > 0) {
+      if (this.names != "n/a") {
         this.yes = true;
-        this.no = false;
       } else {
         this.yes = false;
-        this.no = true;
       }
-    }, error => {
-      console.error('Error:', error); 
-      this.yes = false;
-      this.no = true;
     });
   }
-
-  
 }

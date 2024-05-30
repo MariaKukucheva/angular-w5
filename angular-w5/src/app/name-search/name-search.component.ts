@@ -19,7 +19,6 @@ export class NameSearchComponent {
   month: number = 0;
   inputName: string = '';
 
-  no=false;
   yes=false;
   constructor() {}
 
@@ -29,24 +28,19 @@ export class NameSearchComponent {
 
   getName(name:string):void{
       this.nameS.getNameday(name).subscribe((response: any) => {
-        const nameday = response[0][0];
-        if (nameday && nameday.day) {
+        var nameday = response[0][0];       
+        var splitted = nameday.name.split(", ", 100);
+        if (splitted.indexOf(name) > -1) {
           this.yes = true;
           this.day = nameday.day;
           this.month = nameday.month;
           
         } else {
-          this.no = true;
+          this.yes = false;
         }
-      }, error => {
-        console.error('Error:', error);
-        this.no = true;
-      
-    })
+      })
   }
-
   nameBtn(): void{
-    this.no=false;
     this.yes=false;
     this.getName(this.inputName);
   }
